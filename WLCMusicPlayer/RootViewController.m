@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
 @property (strong, nonatomic) NSString *lyricsText;
 @property (strong, nonatomic) NSArray *lyricsArr;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -214,7 +215,14 @@
 - (void)updateProgress
 {
     self.playedTotalSeconds++;
-    self.progressView.progress = self.playedTotalSeconds / self.audioPlayer.duration;
+    CGFloat rate = self.playedTotalSeconds / self.audioPlayer.duration;
+    self.progressView.progress = rate;
+    
+    NSInteger currentRow = rate * self.lyricsArr.count;
+    if (currentRow < self.lyricsArr.count) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:currentRow inSection:0];
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
 }
 
 #pragma mark - RemoteControlEvent

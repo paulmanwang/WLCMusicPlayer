@@ -10,6 +10,7 @@
                 <outlet property="musicNameLabel" destination="6u0-l1-0X1" id="j1J-XO-kI9"/>
                 <outlet property="playButton" destination="XqO-Wx-1Fx" id="cnC-EL-zif"/>
                 <outlet property="progressView" destination="MYi-U0-khh" id="svJ-PL-EXg"/>
+                <outlet property="tableView" destination="0SR-aE-DWc" id="zR3-ld-WEk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
