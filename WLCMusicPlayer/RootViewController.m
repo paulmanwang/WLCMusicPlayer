@@ -9,7 +9,7 @@
 #import "RootViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface RootViewController ()<AVAudioPlayerDelegate>
+@interface RootViewController ()<AVAudioPlayerDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) AVAudioPlayer *audioPlayer;
 @property (strong, nonatomic) NSArray *musicFiles;
@@ -19,6 +19,8 @@
 @property (strong, nonatomic) NSTimer *progressTimer;
 @property (assign, nonatomic) NSInteger playedTotalSeconds;
 @property (weak, nonatomic) IBOutlet UIButton *playButton;
+@property (strong, nonatomic) NSString *lyricsText;
+@property (strong, nonatomic) NSArray *lyricsArr;
 
 @end
 
@@ -42,6 +44,45 @@
     NSDictionary *musicInfo = self.musicFiles[self.currentIndex];
     [self playMusic:musicInfo[@"url"]];
     [self.playButton setTitle:@"暂停" forState:UIControlStateNormal];
+    
+    self.lyricsText =  @"还没好好的感受 雪花绽放的气候\r\n"
+                                @"我们一起颤抖 会更明白\r\n"
+                                @"什么是温柔\r\n"
+                                @"还没跟你牵著手 走过荒芜的沙丘\r\n"
+                                @"可能从此以后 学会珍惜\r\n"
+                                @"天长和地久\r\n"
+                                @"有时候 有时候\r\n"
+                                @"我会相信一切有尽头\r\n"
+                                @"相聚离开 都有时候\r\n"
+                                @"没有什么会永垂不朽\r\n"
+                                @"可是我 有时候\r\n"
+                                @"宁愿选择留恋不放手\r\n"
+                                @"等到风景都看透\r\n"
+                                @"也许你会陪我 看细水长流\r\n"
+                                @"还没为你把红豆 熬成缠绵的伤口\r\n"
+                                @"然后一起分享 会更明白\r\n"
+                                @"相思的哀愁\r\n"
+                                @"还没好好的感受 醒著亲吻的温柔\r\n"
+                                @"可能在我左右 你才追求\r\n"
+                                @"孤独的自由\r\n"
+                                @"有时候 有时候\r\n"
+                                @"我会相信一切有尽头\r\n"
+                                @"相聚离开 都有时候\r\n"
+                                @"没有什么会永垂不朽\r\n"
+                                @"可是我 有时候\r\n"
+                                @"宁愿选择留恋不放手\r\n"
+                                @"等到风景都看透\r\n"
+                                @"也许你会陪我 看细水长流\r\n"
+                                @"有时候 有时候\r\n"
+                                @"我会相信一切有尽头\r\n"
+                                @"相聚离开 都有时候\r\n"
+                                @"没有什么会永垂不朽\r\n"
+                                @"可是我 有时候\r\n"
+                                @"宁愿选择留恋不放手\r\n"
+                                @"等到风景都看透\r\n"
+                                @"也许你会陪我 看细水长流";
+    
+    self.lyricsArr = [self.lyricsText componentsSeparatedByString:@"\r\n"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -152,7 +193,6 @@
     NSLog(@"audioPlayerEndInterruption---打断终止");
 }
 
-
 #pragma mark - Timer
 
 - (void)startTimer
@@ -210,5 +250,34 @@
     }  
 }
 
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.lyricsArr.count;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 28;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *reuseIdentifier = @"LyricsTableViewCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] init];
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        cell.textLabel.font = [UIFont systemFontOfSize:12.0];
+        cell.backgroundColor = [UIColor clearColor];
+    }
+    
+    cell.textLabel.text = self.lyricsArr[indexPath.row];
+    
+    return cell;
+}
 
 @end

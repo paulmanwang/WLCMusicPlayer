@@ -25,11 +25,6 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="zey-mh-xcw">
-                    <rect key="frame" x="36" y="117" width="247" height="272"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.0" green="0.67123252470000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="王菲专辑" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5jG-BL-QXl">
                     <rect key="frame" x="135" y="91" width="50" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -66,6 +61,15 @@
                         <action selector="onPlayButtonClicked:" destination="-1" eventType="touchUpInside" id="fiv-5g-s4A"/>
                     </connections>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0SR-aE-DWc">
+                    <rect key="frame" x="36" y="117" width="247" height="272"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.0" green="0.67123252470000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="sLn-BT-EiG"/>
+                        <outlet property="delegate" destination="-1" id="ej2-9m-BWr"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
