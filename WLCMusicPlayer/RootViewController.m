@@ -150,6 +150,7 @@
 {
     CALayer *layer = self.headButton.layer;
     layer.cornerRadius = self.headButton.frame.size.width / 2;
+    // http://www.cnblogs.com/kenshincui/p/3972100.html原因就是当绘制一张图片到图层上的时候会重新创建一个图层添加到当前图层，这样一来如果设置了圆角之后虽然底图层有圆角效果，但是子图层还是矩形，只有设置了masksToBounds为YES让子图层按底图层剪切才能显示圆角效果。同样的，有些朋友经常在网上提问说为什么使用UIImageView的layer设置圆角后图片无法显示圆角，只有设置masksToBounds才能出现效果，也是类似的问题。
     layer.masksToBounds = YES;
     
     // 旋转动画
@@ -160,10 +161,11 @@
     [layer addAnimation:rotateAnimation forKey:@"KCBasicAnimation_Rotation"];
 }
 
-- (void)removeHeadRotateAmination
+- (void)pauseHeadRotateAmination
 {
     CALayer *layer = self.headButton.layer;
-    [layer removeAnimationForKey:@"KCBasicAnimation_Rotation"];
+    //[layer removeAnimationForKey:@"KCBasicAnimation_Rotation"];
+    layer.speed = 0;
 }
 
 #pragma mark - Button actions
@@ -173,7 +175,7 @@
     if (self.audioPlayer.isPlaying) {
         [self.playButton setTitle:@"播放" forState:UIControlStateNormal];
         [self.audioPlayer pause];
-        [self removeHeadRotateAmination];
+        [self pauseHeadRotateAmination];
     } else {
         [self.playButton setTitle:@"暂停" forState:UIControlStateNormal];
         [self.audioPlayer play];
