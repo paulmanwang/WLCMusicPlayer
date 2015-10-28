@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSString *lyricsText;
 @property (strong, nonatomic) NSArray *lyricsArr;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *headButton;
 
 @end
 
@@ -84,6 +85,8 @@
                                 @"也许你会陪我 看细水长流";
     
     self.lyricsArr = [self.lyricsText componentsSeparatedByString:@"\r\n"];
+    
+    [self addHeadRotateAmination];
 }
 
 - (void)didReceiveMemoryWarning
@@ -143,6 +146,26 @@
     self.musicNameLabel.text = musicInfo[@"name"];
 }
 
+- (void)addHeadRotateAmination
+{
+    CALayer *layer = self.headButton.layer;
+    layer.cornerRadius = self.headButton.frame.size.width / 2;
+    layer.masksToBounds = YES;
+    
+    // 旋转动画
+    CABasicAnimation *rotateAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotateAnimation.toValue = [NSNumber numberWithFloat:M_PI_2*4];
+    rotateAnimation.duration = 10;
+    rotateAnimation.repeatCount = HUGE_VALF;
+    [layer addAnimation:rotateAnimation forKey:@"KCBasicAnimation_Rotation"];
+}
+
+- (void)removeHeadRotateAmination
+{
+    CALayer *layer = self.headButton.layer;
+    [layer removeAnimationForKey:@"KCBasicAnimation_Rotation"];
+}
+
 #pragma mark - Button actions
 
 - (IBAction)onPlayButtonClicked:(id)sender
@@ -150,9 +173,11 @@
     if (self.audioPlayer.isPlaying) {
         [self.playButton setTitle:@"播放" forState:UIControlStateNormal];
         [self.audioPlayer pause];
+        [self removeHeadRotateAmination];
     } else {
         [self.playButton setTitle:@"暂停" forState:UIControlStateNormal];
         [self.audioPlayer play];
+        [self addHeadRotateAmination];
     }
 }
 
@@ -198,9 +223,12 @@
 
 - (void)startTimer
 {
+    NSLog(@"thread is = %@", [NSThread currentThread]);
     if (!self.progressTimer) {
-        self.progressTimer = [NSTimer timerWithTimeInterval:1.0f target:self selector:@selector(updateProgress) userInfo:nil repeats:YES];
-        [[NSRunLoop currentRunLoop] addTimer:self.progressTimer forMode:NSRunLoopCommonModes];
+        //self.progressTimer = [NSTimer timerWithTimeInterval:1.0f target:self selector:@selector(updateProgress) userInfo:nil repeats:YES];
+        //[[NSRunLoop currentRunLoop] addTimer:self.progressTimer forMode:NSRunLoopCommonModes];
+        
+        self.progressTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateProgress) userInfo:nil repeats:YES];
     }
 }
 
@@ -214,6 +242,7 @@
 
 - (void)updateProgress
 {
+    NSLog(@"current mode = %@", [NSRunLoop currentRunLoop].currentMode);
     self.playedTotalSeconds++;
     CGFloat rate = self.playedTotalSeconds / self.audioPlayer.duration;
     self.progressView.progress = rate;
