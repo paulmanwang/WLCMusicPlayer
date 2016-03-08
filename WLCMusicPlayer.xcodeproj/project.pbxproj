@@ -12,12 +12,12 @@
 		8CF1F0901BB38E6C00D8F6EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CF1F08F1BB38E6C00D8F6EF /* Assets.xcassets */; };
 		8CF1F09E1BB38E6C00D8F6EF /* WLCMusicPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF1F09D1BB38E6C00D8F6EF /* WLCMusicPlayerTests.m */; };
 		8CF1F0A91BB38E6C00D8F6EF /* WLCMusicPlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF1F0A81BB38E6C00D8F6EF /* WLCMusicPlayerUITests.m */; };
-		8CF1F0B91BB38EDE00D8F6EF /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF1F0B71BB38EDE00D8F6EF /* RootViewController.m */; settings = {ASSET_TAGS = (); }; };
-		8CF1F0BA1BB38EDE00D8F6EF /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CF1F0B81BB38EDE00D8F6EF /* RootViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		8CF1F0BE1BB3914E00D8F6EF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CF1F0BD1BB3914E00D8F6EF /* LaunchScreen.xib */; settings = {ASSET_TAGS = (); }; };
-		8CF1F0C71BB3B82100D8F6EF /* hongdou.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8CF1F0C61BB3B82100D8F6EF /* hongdou.mp3 */; settings = {ASSET_TAGS = (); }; };
-		8CF1F0CA1BB3BBD800D8F6EF /* xiaowangshu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8CF1F0C91BB3BBD800D8F6EF /* xiaowangshu.mp3 */; settings = {ASSET_TAGS = (); }; };
-		8CF1F0CC1BB3BC7200D8F6EF /* yinweiaiqing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8CF1F0CB1BB3BC7200D8F6EF /* yinweiaiqing.mp3 */; settings = {ASSET_TAGS = (); }; };
+		8CF1F0B91BB38EDE00D8F6EF /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CF1F0B71BB38EDE00D8F6EF /* RootViewController.m */; };
+		8CF1F0BA1BB38EDE00D8F6EF /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CF1F0B81BB38EDE00D8F6EF /* RootViewController.xib */; };
+		8CF1F0BE1BB3914E00D8F6EF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CF1F0BD1BB3914E00D8F6EF /* LaunchScreen.xib */; };
+		8CF1F0C71BB3B82100D8F6EF /* hongdou.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8CF1F0C61BB3B82100D8F6EF /* hongdou.mp3 */; };
+		8CF1F0CA1BB3BBD800D8F6EF /* xiaowangshu.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8CF1F0C91BB3BBD800D8F6EF /* xiaowangshu.mp3 */; };
+		8CF1F0CC1BB3BC7200D8F6EF /* yinweiaiqing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8CF1F0CB1BB3BC7200D8F6EF /* yinweiaiqing.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -424,6 +424,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				INFOPLIST_FILE = WLCMusicPlayer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -499,6 +500,7 @@
 				8CF1F0AF1BB38E6C00D8F6EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8CF1F0B01BB38E6C00D8F6EF /* Build configuration list for PBXNativeTarget "WLCMusicPlayerTests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +509,7 @@
 				8CF1F0B21BB38E6C00D8F6EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8CF1F0B31BB38E6C00D8F6EF /* Build configuration list for PBXNativeTarget "WLCMusicPlayerUITests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +518,7 @@
 				8CF1F0B51BB38E6C00D8F6EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

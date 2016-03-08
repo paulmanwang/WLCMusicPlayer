@@ -33,7 +33,6 @@
     [super viewDidLoad];
     
     self.progressView.progress = 0;
-    
     //让app支持接受远程控制事件
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
